@@ -1,1111 +1,900 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frohe Weihnachten 2025</title>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(
-          180deg,
-          #0a1628 0%,
-          #1a2a4a 30%,
-          #0d3b4c 70%,
-          #0a2635 100%
-        );
-        font-family: "Segoe UI", "Georgia", serif;
-        overflow-x: hidden;
-        padding: 20px;
-      }
-
-      /* Sterne im Hintergrund */
-      .stars {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 0;
-      }
-
-      .star-bg {
-        position: absolute;
-        background: white;
-        border-radius: 50%;
-        animation: twinkle 3s ease-in-out infinite;
-      }
-
-      @keyframes twinkle {
-        0%,
-        100% {
-          opacity: 0.3;
-          transform: scale(1);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        50% {
-          opacity: 1;
-          transform: scale(1.2);
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(180deg, #0a1628 0%, #1a2a4a 30%, #0d3b4c 70%, #0a2635 100%);
+            font-family: 'Segoe UI', 'Georgia', serif;
+            overflow-x: hidden;
+            padding: 20px;
         }
-      }
 
-      /* Nordlicht-Effekt */
-      .aurora {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 40%;
-        background: linear-gradient(
-          180deg,
-          transparent 0%,
-          rgba(0, 255, 150, 0.03) 30%,
-          rgba(0, 200, 255, 0.05) 50%,
-          rgba(100, 0, 255, 0.03) 70%,
-          transparent 100%
-        );
-        filter: blur(40px);
-        animation: aurora 8s ease-in-out infinite;
-        z-index: 0;
-      }
-
-      @keyframes aurora {
-        0%,
-        100% {
-          opacity: 0.5;
-          transform: translateX(-10%);
+        /* Sterne im Hintergrund */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
         }
-        50% {
-          opacity: 0.8;
-          transform: translateX(10%);
+
+        .star-bg {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
         }
-      }
 
-      /* Schneefall */
-      .snowflakes {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 1;
-      }
-
-      .snowflake {
-        position: absolute;
-        top: -50px;
-        color: rgba(255, 255, 255, 0.9);
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        animation: snowfall linear infinite;
-      }
-
-      @keyframes snowfall {
-        0% {
-          transform: translateY(-50px) translateX(0) rotate(0deg);
-          opacity: 1;
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
         }
-        25% {
-          transform: translateY(25vh) translateX(15px) rotate(90deg);
+
+        /* Nordlicht-Effekt */
+        .aurora {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(
+                180deg,
+                transparent 0%,
+                rgba(0, 255, 150, 0.03) 30%,
+                rgba(0, 200, 255, 0.05) 50%,
+                rgba(100, 0, 255, 0.03) 70%,
+                transparent 100%
+            );
+            filter: blur(40px);
+            animation: aurora 8s ease-in-out infinite;
+            z-index: 0;
         }
-        50% {
-          transform: translateY(50vh) translateX(-15px) rotate(180deg);
+
+        @keyframes aurora {
+            0%, 100% { opacity: 0.5; transform: translateX(-10%); }
+            50% { opacity: 0.8; transform: translateX(10%); }
         }
-        75% {
-          transform: translateY(75vh) translateX(15px) rotate(270deg);
+
+        /* Schneefall */
+        .snowflakes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
         }
-        100% {
-          transform: translateY(105vh) translateX(0) rotate(360deg);
-          opacity: 0.3;
+
+        .snowflake {
+            position: absolute;
+            top: -50px;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            animation: snowfall linear infinite;
         }
-      }
 
-      /* Hauptkarte */
-      .card {
-        position: relative;
-        z-index: 10;
-        width: 480px;
-        max-width: 100%;
-        background: linear-gradient(
-          145deg,
-          rgba(20, 60, 80, 0.9) 0%,
-          rgba(15, 45, 65, 0.95) 50%,
-          rgba(10, 35, 55, 0.9) 100%
-        );
-        backdrop-filter: blur(20px);
-        border-radius: 30px;
-        padding: 50px 40px;
-        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5),
-          0 0 60px rgba(100, 200, 255, 0.1);
-        text-align: center;
-        border: 2px solid rgba(255, 215, 100, 0.3);
-        animation: cardFloat 6s ease-in-out infinite;
-      }
-
-      @keyframes cardFloat {
-        0%,
-        100% {
-          transform: translateY(0);
+        @keyframes snowfall {
+            0% {
+                transform: translateY(-50px) translateX(0) rotate(0deg);
+                opacity: 1;
+            }
+            25% { transform: translateY(25vh) translateX(15px) rotate(90deg); }
+            50% { transform: translateY(50vh) translateX(-15px) rotate(180deg); }
+            75% { transform: translateY(75vh) translateX(15px) rotate(270deg); }
+            100% {
+                transform: translateY(105vh) translateX(0) rotate(360deg);
+                opacity: 0.3;
+            }
         }
-        50% {
-          transform: translateY(-10px);
-        }
-      }
 
-      .card::before {
-        content: "";
-        position: absolute;
-        top: -2px;
-        left: -2px;
-        right: -2px;
-        bottom: -2px;
-        background: linear-gradient(
-          45deg,
-          #ffd700,
-          #ffec8b,
-          #ffd700,
-          #daa520,
-          #ffd700
-        );
-        border-radius: 31px;
-        z-index: -1;
-        animation: borderGlow 3s linear infinite;
-        background-size: 300% 300%;
-      }
-
-      @keyframes borderGlow {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
-
-      .card::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(
-          145deg,
-          rgba(20, 60, 80, 0.98) 0%,
-          rgba(15, 45, 65, 0.99) 50%,
-          rgba(10, 35, 55, 0.98) 100%
-        );
-        border-radius: 28px;
-        z-index: -1;
-      }
-
-      /* Schleife */
-      .bow {
-        position: absolute;
-        top: -20px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 20;
-      }
-
-      .bow-center {
-        width: 30px;
-        height: 30px;
-        background: linear-gradient(135deg, #ffd700, #ffec8b, #daa520);
-        border-radius: 50%;
-        margin: 0 auto;
-        box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-        position: relative;
-        z-index: 2;
-      }
-
-      .bow-left,
-      .bow-right {
-        position: absolute;
-        top: 5px;
-        width: 45px;
-        height: 35px;
-        background: linear-gradient(135deg, #ffd700, #ffec8b);
-        border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-        box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
-      }
-
-      .bow-left {
-        left: -35px;
-        transform: rotate(-30deg);
-      }
-      .bow-right {
-        right: -35px;
-        transform: rotate(30deg);
-      }
-
-      .bow-tail-left,
-      .bow-tail-right {
-        position: absolute;
-        top: 25px;
-        width: 15px;
-        height: 50px;
-        background: linear-gradient(180deg, #ffd700, #daa520);
-        border-radius: 0 0 10px 10px;
-      }
-
-      .bow-tail-left {
-        left: -5px;
-        transform: rotate(20deg);
-      }
-      .bow-tail-right {
-        right: -5px;
-        transform: rotate(-20deg);
-      }
-
-      /* Personalisierter Gruß */
-      .personal-greeting {
-        color: #87ceeb;
-        font-size: 1.3em;
-        font-weight: 300;
-        margin-bottom: 10px;
-        opacity: 0;
-        animation: fadeInDown 1s ease-out 0.5s forwards;
-      }
-
-      .personal-greeting .name {
-        color: #ffd700;
-        font-weight: 500;
-        font-size: 1.1em;
-        text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-      }
-
-      @keyframes fadeInDown {
-        0% {
-          opacity: 0;
-          transform: translateY(-20px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* Texte */
-      .greeting {
-        color: transparent;
-        background: linear-gradient(135deg, #ffd700, #ffec8b, #ffd700, #fff8dc);
-        background-clip: text;
-        -webkit-background-clip: text;
-        font-size: 2.5em;
-        font-weight: 300;
-        letter-spacing: 2px;
-        margin-bottom: 5px;
-        animation: shimmer 3s ease-in-out infinite;
-        background-size: 200% auto;
-      }
-
-      @keyframes shimmer {
-        0% {
-          background-position: 0% center;
-        }
-        50% {
-          background-position: 100% center;
-        }
-        100% {
-          background-position: 0% center;
-        }
-      }
-
-      .year {
-        color: #87ceeb;
-        font-size: 1.4em;
-        font-weight: 300;
-        letter-spacing: 8px;
-        margin-bottom: 15px;
-        opacity: 0.9;
-      }
-
-      .divider {
-        width: 80%;
-        height: 1px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 215, 0, 0.5),
-          transparent
-        );
-        margin: 15px auto;
-      }
-
-      /* Lichterkette */
-      .string-lights {
-        display: flex;
-        justify-content: center;
-        gap: 8px;
-        margin: 25px 0;
-        flex-wrap: wrap;
-        padding: 0 10px;
-      }
-
-      .bulb {
-        width: 18px;
-        height: 25px;
-        border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
-        position: relative;
-        animation: glow 2s ease-in-out infinite;
-      }
-
-      .bulb::before {
-        content: "";
-        position: absolute;
-        top: -6px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 8px;
-        height: 8px;
-        background: linear-gradient(180deg, #888, #444);
-        border-radius: 2px;
-      }
-
-      .bulb::after {
-        content: "";
-        position: absolute;
-        top: -9px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 120%;
-        height: 3px;
-        background: #1a3a1a;
-        z-index: -1;
-      }
-
-      .bulb:nth-child(1) {
-        background: radial-gradient(circle at 30% 30%, #87ceeb, #4682b4);
-        animation-delay: 0s;
-      }
-      .bulb:nth-child(2) {
-        background: radial-gradient(circle at 30% 30%, #ffd700, #daa520);
-        animation-delay: 0.15s;
-      }
-      .bulb:nth-child(3) {
-        background: radial-gradient(circle at 30% 30%, #98fb98, #3cb371);
-        animation-delay: 0.3s;
-      }
-      .bulb:nth-child(4) {
-        background: radial-gradient(circle at 30% 30%, #dda0dd, #9370db);
-        animation-delay: 0.45s;
-      }
-      .bulb:nth-child(5) {
-        background: radial-gradient(circle at 30% 30%, #87ceeb, #4682b4);
-        animation-delay: 0.6s;
-      }
-      .bulb:nth-child(6) {
-        background: radial-gradient(circle at 30% 30%, #ffd700, #daa520);
-        animation-delay: 0.75s;
-      }
-      .bulb:nth-child(7) {
-        background: radial-gradient(circle at 30% 30%, #98fb98, #3cb371);
-        animation-delay: 0.9s;
-      }
-      .bulb:nth-child(8) {
-        background: radial-gradient(circle at 30% 30%, #dda0dd, #9370db);
-        animation-delay: 1.05s;
-      }
-      .bulb:nth-child(9) {
-        background: radial-gradient(circle at 30% 30%, #87ceeb, #4682b4);
-        animation-delay: 1.2s;
-      }
-
-      @keyframes glow {
-        0%,
-        100% {
-          opacity: 0.6;
-          box-shadow: 0 0 5px currentColor;
-          transform: scale(0.95);
-        }
-        50% {
-          opacity: 1;
-          box-shadow: 0 0 20px currentColor, 0 0 30px currentColor;
-          transform: scale(1);
-        }
-      }
-
-      /* Weihnachtsbaum */
-      .tree-container {
-        position: relative;
-        width: 160px;
-        height: 180px;
-        margin: 20px auto;
-      }
-
-      .tree-glow {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 150px;
-        height: 150px;
-        background: radial-gradient(
-          circle,
-          rgba(100, 200, 150, 0.2) 0%,
-          transparent 70%
-        );
-        border-radius: 50%;
-        animation: treeGlow 2s ease-in-out infinite alternate;
-      }
-
-      @keyframes treeGlow {
-        0% {
-          transform: translate(-50%, -50%) scale(1);
-          opacity: 0.5;
-        }
-        100% {
-          transform: translate(-50%, -50%) scale(1.2);
-          opacity: 0.8;
-        }
-      }
-
-      .tree-star {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 35px;
-        z-index: 10;
-        animation: starShine 1.5s ease-in-out infinite alternate;
-        filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
-      }
-
-      @keyframes starShine {
-        0% {
-          filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
-          transform: translateX(-50%) scale(1);
-        }
-        100% {
-          filter: drop-shadow(0 0 30px rgba(255, 215, 0, 1));
-          transform: translateX(-50%) scale(1.15);
-        }
-      }
-
-      .tree-layer {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 0;
-        height: 0;
-        border-left: solid transparent;
-        border-right: solid transparent;
-        border-bottom: solid;
-      }
-
-      .tree-layer-1 {
-        top: 30px;
-        border-left-width: 30px;
-        border-right-width: 30px;
-        border-bottom-width: 40px;
-        border-bottom-color: #2d8659;
-        filter: drop-shadow(0 3px 6px rgba(0, 50, 30, 0.4));
-      }
-
-      .tree-layer-2 {
-        top: 55px;
-        border-left-width: 45px;
-        border-right-width: 45px;
-        border-bottom-width: 50px;
-        border-bottom-color: #259050;
-        filter: drop-shadow(0 3px 6px rgba(0, 50, 30, 0.4));
-      }
-
-      .tree-layer-3 {
-        top: 85px;
-        border-left-width: 60px;
-        border-right-width: 60px;
-        border-bottom-width: 55px;
-        border-bottom-color: #1e7a42;
-        filter: drop-shadow(0 5px 10px rgba(0, 50, 30, 0.5));
-      }
-
-      .tree-trunk {
-        position: absolute;
-        bottom: 5px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 24px;
-        height: 30px;
-        background: linear-gradient(90deg, #5c4033, #8b6b4a, #5c4033);
-        border-radius: 3px;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-      }
-
-      .tree-ornament {
-        position: absolute;
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        z-index: 5;
-        animation: ornamentGlow 2s ease-in-out infinite alternate;
-      }
-
-      .tree-ornament::before {
-        content: "";
-        position: absolute;
-        top: -4px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 4px;
-        height: 4px;
-        background: #daa520;
-        border-radius: 1px;
-      }
-
-      .tree-ornament:nth-child(5) {
-        top: 60px;
-        left: 65px;
-        background: radial-gradient(circle at 30% 30%, #87ceeb, #4682b4);
-        box-shadow: 0 0 8px rgba(135, 206, 235, 0.6);
-        animation-delay: 0s;
-      }
-
-      .tree-ornament:nth-child(6) {
-        top: 65px;
-        left: 88px;
-        background: radial-gradient(circle at 30% 30%, #ffd700, #daa520);
-        box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
-        animation-delay: 0.3s;
-      }
-
-      .tree-ornament:nth-child(7) {
-        top: 95px;
-        left: 55px;
-        background: radial-gradient(circle at 30% 30%, #dda0dd, #9370db);
-        box-shadow: 0 0 8px rgba(221, 160, 221, 0.6);
-        animation-delay: 0.6s;
-      }
-
-      .tree-ornament:nth-child(8) {
-        top: 100px;
-        left: 95px;
-        background: radial-gradient(circle at 30% 30%, #98fb98, #3cb371);
-        box-shadow: 0 0 8px rgba(152, 251, 152, 0.6);
-        animation-delay: 0.9s;
-      }
-
-      .tree-ornament:nth-child(9) {
-        top: 125px;
-        left: 45px;
-        background: radial-gradient(circle at 30% 30%, #87ceeb, #4682b4);
-        box-shadow: 0 0 8px rgba(135, 206, 235, 0.6);
-        animation-delay: 1.2s;
-      }
-
-      .tree-ornament:nth-child(10) {
-        top: 130px;
-        left: 105px;
-        background: radial-gradient(circle at 30% 30%, #ffd700, #daa520);
-        box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
-        animation-delay: 1.5s;
-      }
-
-      @keyframes ornamentGlow {
-        0% {
-          box-shadow: 0 0 5px currentColor;
-        }
-        100% {
-          box-shadow: 0 0 15px currentColor;
-        }
-      }
-
-      /* Nachricht */
-      .message {
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 1.05em;
-        line-height: 2;
-        margin: 25px 0;
-        font-style: italic;
-        font-weight: 300;
-      }
-
-      .message-highlight {
-        color: #ffd700;
-        font-weight: 400;
-      }
-
-      /* Personalisierte Nachricht */
-      .personal-message {
-        background: rgba(255, 215, 0, 0.1);
-        border: 1px solid rgba(255, 215, 0, 0.3);
-        border-radius: 15px;
-        padding: 15px 20px;
-        margin: 20px 0;
-        color: #fff;
-        font-size: 0.95em;
-        line-height: 1.8;
-      }
-
-      .personal-message .name {
-        color: #ffd700;
-        font-weight: 500;
-      }
-
-      /* Interaktive Geschenke */
-      .gifts-section {
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
-        gap: 25px;
-        margin: 30px 0;
-        min-height: 120px;
-      }
-
-      .gift-wrapper {
-        position: relative;
-        cursor: pointer;
-        transition: transform 0.3s ease;
-      }
-
-      .gift-wrapper:hover {
-        transform: scale(1.1);
-      }
-
-      .gift-wrapper:hover .gift-box {
-        box-shadow: 0 0 25px currentColor;
-      }
-
-      .gift-box {
-        width: 50px;
-        height: 45px;
-        border-radius: 8px;
-        position: relative;
-        transition: all 0.3s ease;
-        animation: giftIdle 2s ease-in-out infinite;
-      }
-
-      .gift-wrapper:nth-child(1) .gift-box {
-        animation-delay: 0s;
-      }
-      .gift-wrapper:nth-child(2) .gift-box {
-        animation-delay: 0.3s;
-      }
-      .gift-wrapper:nth-child(3) .gift-box {
-        animation-delay: 0.6s;
-      }
-
-      @keyframes giftIdle {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-5px);
-        }
-      }
-
-      .gift-box.blue {
-        background: linear-gradient(145deg, #5b9bd5, #2e75b6);
-        color: #5b9bd5;
-      }
-
-      .gift-box.gold {
-        background: linear-gradient(145deg, #ffd966, #bf9000);
-        color: #ffd966;
-      }
-
-      .gift-box.purple {
-        background: linear-gradient(145deg, #b4a7d6, #8e7cc3);
-        color: #b4a7d6;
-      }
-
-      .gift-ribbon-v {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 10px;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          rgba(255, 255, 255, 0.2),
-          rgba(255, 255, 255, 0.5),
-          rgba(255, 255, 255, 0.2)
-        );
-      }
-
-      .gift-ribbon-h {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%);
-        width: 100%;
-        height: 10px;
-        background: linear-gradient(
-          180deg,
-          rgba(255, 255, 255, 0.2),
-          rgba(255, 255, 255, 0.5),
-          rgba(255, 255, 255, 0.2)
-        );
-      }
-
-      .gift-bow {
-        position: absolute;
-        top: -15px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 25px;
-        filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
-      }
-
-      .gift-label {
-        position: absolute;
-        bottom: -20px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 0.7em;
-        color: rgba(255, 255, 255, 0.6);
-        white-space: nowrap;
-      }
-
-      .surprise {
-        position: absolute;
-        bottom: 100%;
-        left: 50%;
-        transform: translateX(-50%) scale(0);
-        font-size: 50px;
-        opacity: 0;
-        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
-        pointer-events: none;
-      }
-
-      .gift-wrapper.opened .surprise {
-        transform: translateX(-50%) scale(1) translateY(-10px);
-        opacity: 1;
-        animation: surpriseBounce 0.6s ease-out forwards,
-          surpriseFloat 2s ease-in-out 0.6s infinite;
-      }
-
-      @keyframes surpriseBounce {
-        0% {
-          transform: translateX(-50%) scale(0) translateY(20px);
-        }
-        50% {
-          transform: translateX(-50%) scale(1.2) translateY(-20px);
-        }
-        100% {
-          transform: translateX(-50%) scale(1) translateY(-10px);
-        }
-      }
-
-      @keyframes surpriseFloat {
-        0%,
-        100% {
-          transform: translateX(-50%) scale(1) translateY(-10px);
-        }
-        50% {
-          transform: translateX(-50%) scale(1.05) translateY(-20px);
-        }
-      }
-
-      .gift-wrapper.opened .gift-box {
-        animation: giftShake 0.5s ease-out;
-      }
-
-      @keyframes giftShake {
-        0%,
-        100% {
-          transform: rotate(0deg);
-        }
-        20% {
-          transform: rotate(-10deg);
-        }
-        40% {
-          transform: rotate(10deg);
-        }
-        60% {
-          transform: rotate(-5deg);
-        }
-        80% {
-          transform: rotate(5deg);
-        }
-      }
-
-      .click-hint {
-        font-size: 0.8em;
-        color: rgba(255, 255, 255, 0.5);
-        margin-top: 10px;
-        animation: hintPulse 2s ease-in-out infinite;
-      }
-
-      @keyframes hintPulse {
-        0%,
-        100% {
-          opacity: 0.5;
-        }
-        50% {
-          opacity: 0.8;
-        }
-      }
-
-      /* Fußzeile */
-      .footer {
-        margin-top: 25px;
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-        font-size: 1.5em;
-      }
-
-      .footer span {
-        animation: iconFloat 2s ease-in-out infinite;
-        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
-      }
-
-      .footer span:nth-child(1) {
-        animation-delay: 0s;
-      }
-      .footer span:nth-child(2) {
-        animation-delay: 0.2s;
-      }
-      .footer span:nth-child(3) {
-        animation-delay: 0.4s;
-      }
-      .footer span:nth-child(4) {
-        animation-delay: 0.6s;
-      }
-      .footer span:nth-child(5) {
-        animation-delay: 0.8s;
-      }
-
-      @keyframes iconFloat {
-        0%,
-        100% {
-          transform: translateY(0) scale(1);
-        }
-        50% {
-          transform: translateY(-8px) scale(1.1);
-        }
-      }
-
-      /* Link teilen */
-      .share-section {
-        margin-top: 25px;
-        padding-top: 20px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .share-title {
-        color: rgba(255, 255, 255, 0.6);
-        font-size: 0.85em;
-        margin-bottom: 10px;
-      }
-
-      .share-input-wrapper {
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-      }
-
-      .share-input {
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 215, 0, 0.3);
-        border-radius: 8px;
-        padding: 10px 15px;
-        color: #fff;
-        font-size: 0.9em;
-        width: 180px;
-        outline: none;
-        transition: all 0.3s ease;
-      }
-
-      .share-input:focus {
-        border-color: rgba(255, 215, 0, 0.6);
-        box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
-      }
-
-      .share-input::placeholder {
-        color: rgba(255, 255, 255, 0.4);
-      }
-
-      .share-btn {
-        background: linear-gradient(135deg, #ffd700, #daa520);
-        border: none;
-        border-radius: 8px;
-        padding: 10px 20px;
-        color: #1a2a4a;
-        font-size: 0.9em;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .share-btn:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
-      }
-
-      .share-link {
-        margin-top: 15px;
-        padding: 10px;
-        background: rgba(0, 0, 0, 0.2);
-        border-radius: 8px;
-        display: none;
-      }
-
-      .share-link.visible {
-        display: block;
-        animation: fadeIn 0.3s ease-out;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(-10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .share-link-text {
-        color: #87ceeb;
-        font-size: 0.8em;
-        word-break: break-all;
-        margin-bottom: 10px;
-      }
-
-      .copy-btn {
-        background: rgba(135, 206, 235, 0.2);
-        border: 1px solid rgba(135, 206, 235, 0.4);
-        border-radius: 6px;
-        padding: 8px 15px;
-        color: #87ceeb;
-        font-size: 0.85em;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .copy-btn:hover {
-        background: rgba(135, 206, 235, 0.3);
-      }
-
-      .copy-btn.copied {
-        background: rgba(152, 251, 152, 0.2);
-        border-color: rgba(152, 251, 152, 0.4);
-        color: #98fb98;
-      }
-
-      /* Responsive */
-      @media (max-width: 500px) {
+        /* Hauptkarte */
         .card {
-          padding: 40px 20px;
-          border-radius: 25px;
+            position: relative;
+            z-index: 10;
+            width: 480px;
+            max-width: 100%;
+            background: linear-gradient(145deg,
+                rgba(20, 60, 80, 0.9) 0%,
+                rgba(15, 45, 65, 0.95) 50%,
+                rgba(10, 35, 55, 0.9) 100%
+            );
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 50px 40px;
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.5),
+                0 0 60px rgba(100, 200, 255, 0.1);
+            text-align: center;
+            border: 2px solid rgba(255, 215, 100, 0.3);
+            animation: cardFloat 6s ease-in-out infinite;
         }
 
-        .greeting {
-          font-size: 1.8em;
+        @keyframes cardFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
-        .year {
-          font-size: 1.1em;
-          letter-spacing: 5px;
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ffd700, #ffec8b, #ffd700, #daa520, #ffd700);
+            border-radius: 31px;
+            z-index: -1;
+            animation: borderGlow 3s linear infinite;
+            background-size: 300% 300%;
         }
+
+        @keyframes borderGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(145deg,
+                rgba(20, 60, 80, 0.98) 0%,
+                rgba(15, 45, 65, 0.99) 50%,
+                rgba(10, 35, 55, 0.98) 100%
+            );
+            border-radius: 28px;
+            z-index: -1;
+        }
+
+        /* Schleife */
+        .bow {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+        }
+
+        .bow-center {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #ffd700, #ffec8b, #daa520);
+            border-radius: 50%;
+            margin: 0 auto;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            position: relative;
+            z-index: 2;
+        }
+
+        .bow-left, .bow-right {
+            position: absolute;
+            top: 5px;
+            width: 45px;
+            height: 35px;
+            background: linear-gradient(135deg, #ffd700, #ffec8b);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .bow-left { left: -35px; transform: rotate(-30deg); }
+        .bow-right { right: -35px; transform: rotate(30deg); }
+
+        .bow-tail-left, .bow-tail-right {
+            position: absolute;
+            top: 25px;
+            width: 15px;
+            height: 50px;
+            background: linear-gradient(180deg, #ffd700, #daa520);
+            border-radius: 0 0 10px 10px;
+        }
+
+        .bow-tail-left { left: -5px; transform: rotate(20deg); }
+        .bow-tail-right { right: -5px; transform: rotate(-20deg); }
+
+        /* Personalisierter Gruß */
         .personal-greeting {
-          font-size: 1.1em;
+            color: #87ceeb;
+            font-size: 1.3em;
+            font-weight: 300;
+            margin-bottom: 10px;
+            display: none;
         }
+
+        .personal-greeting.visible {
+            display: block;
+            animation: fadeInDown 1s ease-out forwards;
+        }
+
+        .personal-greeting .name {
+            color: #ffd700;
+            font-weight: 500;
+            font-size: 1.1em;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Texte */
+        .greeting {
+            color: transparent;
+            background: linear-gradient(135deg, #ffd700, #ffec8b, #ffd700, #fff8dc);
+            background-clip: text;
+            -webkit-background-clip: text;
+            font-size: 2.5em;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            animation: shimmer 3s ease-in-out infinite;
+            background-size: 200% auto;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+            100% { background-position: 0% center; }
+        }
+
+        .year {
+            color: #87ceeb;
+            font-size: 1.4em;
+            font-weight: 300;
+            letter-spacing: 8px;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .divider {
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.5), transparent);
+            margin: 15px auto;
+        }
+
+        /* Lichterkette */
+        .string-lights {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+            padding: 0 10px;
+        }
+
+        .bulb {
+            width: 18px;
+            height: 25px;
+            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+            position: relative;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .bulb::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(180deg, #888, #444);
+            border-radius: 2px;
+        }
+
+        .bulb::after {
+            content: '';
+            position: absolute;
+            top: -9px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120%;
+            height: 3px;
+            background: #1a3a1a;
+            z-index: -1;
+        }
+
+        .bulb:nth-child(1) { background: radial-gradient(circle at 30% 30%, #87ceeb, #4682b4); animation-delay: 0s; }
+        .bulb:nth-child(2) { background: radial-gradient(circle at 30% 30%, #ffd700, #daa520); animation-delay: 0.15s; }
+        .bulb:nth-child(3) { background: radial-gradient(circle at 30% 30%, #98fb98, #3cb371); animation-delay: 0.3s; }
+        .bulb:nth-child(4) { background: radial-gradient(circle at 30% 30%, #dda0dd, #9370db); animation-delay: 0.45s; }
+        .bulb:nth-child(5) { background: radial-gradient(circle at 30% 30%, #87ceeb, #4682b4); animation-delay: 0.6s; }
+        .bulb:nth-child(6) { background: radial-gradient(circle at 30% 30%, #ffd700, #daa520); animation-delay: 0.75s; }
+        .bulb:nth-child(7) { background: radial-gradient(circle at 30% 30%, #98fb98, #3cb371); animation-delay: 0.9s; }
+        .bulb:nth-child(8) { background: radial-gradient(circle at 30% 30%, #dda0dd, #9370db); animation-delay: 1.05s; }
+        .bulb:nth-child(9) { background: radial-gradient(circle at 30% 30%, #87ceeb, #4682b4); animation-delay: 1.2s; }
+
+        @keyframes glow {
+            0%, 100% {
+                opacity: 0.6;
+                box-shadow: 0 0 5px currentColor;
+                transform: scale(0.95);
+            }
+            50% {
+                opacity: 1;
+                box-shadow: 0 0 20px currentColor, 0 0 30px currentColor;
+                transform: scale(1);
+            }
+        }
+
+        /* Weihnachtsbaum */
         .tree-container {
-          transform: scale(0.8);
-          margin: 10px auto;
+            position: relative;
+            width: 160px;
+            height: 180px;
+            margin: 20px auto;
         }
+
+        .tree-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(100, 200, 150, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: treeGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes treeGlow {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+        }
+
+        .tree-star {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 35px;
+            z-index: 10;
+            animation: starShine 1.5s ease-in-out infinite alternate;
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+        }
+
+        @keyframes starShine {
+            0% {
+                filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+                transform: translateX(-50%) scale(1);
+            }
+            100% {
+                filter: drop-shadow(0 0 30px rgba(255, 215, 0, 1));
+                transform: translateX(-50%) scale(1.15);
+            }
+        }
+
+        .tree-layer {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: solid transparent;
+            border-right: solid transparent;
+            border-bottom: solid;
+        }
+
+        .tree-layer-1 {
+            top: 30px;
+            border-left-width: 30px;
+            border-right-width: 30px;
+            border-bottom-width: 40px;
+            border-bottom-color: #2d8659;
+            filter: drop-shadow(0 3px 6px rgba(0, 50, 30, 0.4));
+        }
+
+        .tree-layer-2 {
+            top: 55px;
+            border-left-width: 45px;
+            border-right-width: 45px;
+            border-bottom-width: 50px;
+            border-bottom-color: #259050;
+            filter: drop-shadow(0 3px 6px rgba(0, 50, 30, 0.4));
+        }
+
+        .tree-layer-3 {
+            top: 85px;
+            border-left-width: 60px;
+            border-right-width: 60px;
+            border-bottom-width: 55px;
+            border-bottom-color: #1e7a42;
+            filter: drop-shadow(0 5px 10px rgba(0, 50, 30, 0.5));
+        }
+
+        .tree-trunk {
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 30px;
+            background: linear-gradient(90deg, #5c4033, #8b6b4a, #5c4033);
+            border-radius: 3px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .tree-ornament {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            z-index: 5;
+            animation: ornamentGlow 2s ease-in-out infinite alternate;
+        }
+
+        .tree-ornament::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background: #daa520;
+            border-radius: 1px;
+        }
+
+        .tree-ornament:nth-child(5) {
+            top: 60px; left: 65px;
+            background: radial-gradient(circle at 30% 30%, #87ceeb, #4682b4);
+            box-shadow: 0 0 8px rgba(135, 206, 235, 0.6);
+            animation-delay: 0s;
+        }
+
+        .tree-ornament:nth-child(6) {
+            top: 65px; left: 88px;
+            background: radial-gradient(circle at 30% 30%, #ffd700, #daa520);
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+            animation-delay: 0.3s;
+        }
+
+        .tree-ornament:nth-child(7) {
+            top: 95px; left: 55px;
+            background: radial-gradient(circle at 30% 30%, #dda0dd, #9370db);
+            box-shadow: 0 0 8px rgba(221, 160, 221, 0.6);
+            animation-delay: 0.6s;
+        }
+
+        .tree-ornament:nth-child(8) {
+            top: 100px; left: 95px;
+            background: radial-gradient(circle at 30% 30%, #98fb98, #3cb371);
+            box-shadow: 0 0 8px rgba(152, 251, 152, 0.6);
+            animation-delay: 0.9s;
+        }
+
+        .tree-ornament:nth-child(9) {
+            top: 125px; left: 45px;
+            background: radial-gradient(circle at 30% 30%, #87ceeb, #4682b4);
+            box-shadow: 0 0 8px rgba(135, 206, 235, 0.6);
+            animation-delay: 1.2s;
+        }
+
+        .tree-ornament:nth-child(10) {
+            top: 130px; left: 105px;
+            background: radial-gradient(circle at 30% 30%, #ffd700, #daa520);
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+            animation-delay: 1.5s;
+        }
+
+        @keyframes ornamentGlow {
+            0% { box-shadow: 0 0 5px currentColor; }
+            100% { box-shadow: 0 0 15px currentColor; }
+        }
+
+        /* Nachricht */
+        .message {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.05em;
+            line-height: 2;
+            margin: 25px 0;
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .message-highlight {
+            color: #ffd700;
+            font-weight: 400;
+        }
+
+        /* Personalisierte Nachricht */
+        .personal-message {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 15px;
+            padding: 15px 20px;
+            margin: 20px 0;
+            color: #fff;
+            font-size: 0.95em;
+            line-height: 1.8;
+            display: none;
+        }
+
+        .personal-message.visible {
+            display: block;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .personal-message .name {
+            color: #ffd700;
+            font-weight: 500;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Interaktive Geschenke */
         .gifts-section {
-          gap: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 25px;
+            margin: 30px 0;
+            min-height: 120px;
         }
+
+        .gift-wrapper {
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gift-wrapper:hover {
+            transform: scale(1.1);
+        }
+
+        .gift-wrapper:hover .gift-box {
+            box-shadow: 0 0 25px currentColor;
+        }
+
         .gift-box {
-          width: 40px;
-          height: 36px;
+            width: 50px;
+            height: 45px;
+            border-radius: 8px;
+            position: relative;
+            transition: all 0.3s ease;
+            animation: giftIdle 2s ease-in-out infinite;
         }
+
+        .gift-wrapper:nth-child(1) .gift-box { animation-delay: 0s; }
+        .gift-wrapper:nth-child(2) .gift-box { animation-delay: 0.3s; }
+        .gift-wrapper:nth-child(3) .gift-box { animation-delay: 0.6s; }
+
+        @keyframes giftIdle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .gift-box.blue {
+            background: linear-gradient(145deg, #5b9bd5, #2e75b6);
+            color: #5b9bd5;
+        }
+
+        .gift-box.gold {
+            background: linear-gradient(145deg, #ffd966, #bf9000);
+            color: #ffd966;
+        }
+
+        .gift-box.purple {
+            background: linear-gradient(145deg, #b4a7d6, #8e7cc3);
+            color: #b4a7d6;
+        }
+
+        .gift-ribbon-v {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 100%;
+            background: linear-gradient(90deg,
+                rgba(255,255,255,0.2),
+                rgba(255,255,255,0.5),
+                rgba(255,255,255,0.2)
+            );
+        }
+
+        .gift-ribbon-h {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(180deg,
+                rgba(255,255,255,0.2),
+                rgba(255,255,255,0.5),
+                rgba(255,255,255,0.2)
+            );
+        }
+
+        .gift-bow {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 25px;
+            filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+        }
+
+        .gift-label {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7em;
+            color: rgba(255,255,255,0.6);
+            white-space: nowrap;
+        }
+
         .surprise {
-          font-size: 40px;
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            font-size: 50px;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+            pointer-events: none;
         }
+
+        .gift-wrapper.opened .surprise {
+            transform: translateX(-50%) scale(1) translateY(-10px);
+            opacity: 1;
+            animation: surpriseBounce 0.6s ease-out forwards, surpriseFloat 2s ease-in-out 0.6s infinite;
+        }
+
+        @keyframes surpriseBounce {
+            0% { transform: translateX(-50%) scale(0) translateY(20px); }
+            50% { transform: translateX(-50%) scale(1.2) translateY(-20px); }
+            100% { transform: translateX(-50%) scale(1) translateY(-10px); }
+        }
+
+        @keyframes surpriseFloat {
+            0%, 100% { transform: translateX(-50%) scale(1) translateY(-10px); }
+            50% { transform: translateX(-50%) scale(1.05) translateY(-20px); }
+        }
+
+        .gift-wrapper.opened .gift-box {
+            animation: giftShake 0.5s ease-out;
+        }
+
+        @keyframes giftShake {
+            0%, 100% { transform: rotate(0deg); }
+            20% { transform: rotate(-10deg); }
+            40% { transform: rotate(10deg); }
+            60% { transform: rotate(-5deg); }
+            80% { transform: rotate(5deg); }
+        }
+
+        .click-hint {
+            font-size: 0.8em;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 10px;
+            animation: hintPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes hintPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Fußzeile */
+        .footer {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            font-size: 1.5em;
+        }
+
+        .footer span {
+            animation: iconFloat 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+        }
+
+        .footer span:nth-child(1) { animation-delay: 0s; }
+        .footer span:nth-child(2) { animation-delay: 0.2s; }
+        .footer span:nth-child(3) { animation-delay: 0.4s; }
+        .footer span:nth-child(4) { animation-delay: 0.6s; }
+        .footer span:nth-child(5) { animation-delay: 0.8s; }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-8px) scale(1.1); }
+        }
+
+        /* Teilen-Bereich - nur ohne Parameter sichtbar */
+        .share-section {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: none;
+        }
+
+        .share-section.visible {
+            display: block;
+        }
+
+        .share-title {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85em;
+            margin-bottom: 10px;
+        }
+
+        .share-input-wrapper {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
         .share-input {
-          width: 140px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            padding: 10px 15px;
+            color: #fff;
+            font-size: 0.9em;
+            width: 180px;
+            outline: none;
+            transition: all 0.3s ease;
         }
-      }
+
+        .share-input:focus {
+            border-color: rgba(255, 215, 0, 0.6);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+        }
+
+        .share-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .share-btn {
+            background: linear-gradient(135deg, #ffd700, #daa520);
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            color: #1a2a4a;
+            font-size: 0.9em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .share-link {
+            margin-top: 15px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            display: none;
+        }
+
+        .share-link.visible {
+            display: block;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .share-link-text {
+            color: #87ceeb;
+            font-size: 0.8em;
+            word-break: break-all;
+            margin-bottom: 10px;
+        }
+
+        .copy-btn {
+            background: rgba(135, 206, 235, 0.2);
+            border: 1px solid rgba(135, 206, 235, 0.4);
+            border-radius: 6px;
+            padding: 8px 15px;
+            color: #87ceeb;
+            font-size: 0.85em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: rgba(135, 206, 235, 0.3);
+        }
+
+        .copy-btn.copied {
+            background: rgba(152, 251, 152, 0.2);
+            border-color: rgba(152, 251, 152, 0.4);
+            color: #98fb98;
+        }
+
+        /* Von-Absender Bereich */
+        .from-section {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: none;
+        }
+
+        .from-section.visible {
+            display: block;
+            animation: fadeIn 0.8s ease-out 0.5s both;
+        }
+
+        .from-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95em;
+            font-style: italic;
+        }
+
+        .from-name {
+            color: #ffd700;
+            font-weight: 500;
+            font-size: 1.1em;
+        }
+
+        /* Responsive */
+        @media (max-width: 500px) {
+            .card {
+                padding: 40px 20px;
+                border-radius: 25px;
+            }
+
+            .greeting { font-size: 1.8em; }
+            .year { font-size: 1.1em; letter-spacing: 5px; }
+            .personal-greeting { font-size: 1.1em; }
+            .tree-container { transform: scale(0.8); margin: 10px auto; }
+            .gifts-section { gap: 15px; }
+            .gift-box { width: 40px; height: 36px; }
+            .surprise { font-size: 40px; }
+            .share-input { width: 140px; }
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <!-- Sterne -->
     <div class="stars">
-      <div
-        class="star-bg"
-        style="top: 10%; left: 5%; width: 3px; height: 3px; animation-delay: 0s"
-      ></div>
-      <div
-        class="star-bg"
-        style="
-          top: 20%;
-          left: 15%;
-          width: 2px;
-          height: 2px;
-          animation-delay: 0.5s;
-        "
-      ></div>
-      <div
-        class="star-bg"
-        style="top: 5%; left: 25%; width: 2px; height: 2px; animation-delay: 1s"
-      ></div>
-      <div
-        class="star-bg"
-        style="
-          top: 15%;
-          left: 40%;
-          width: 3px;
-          height: 3px;
-          animation-delay: 1.5s;
-        "
-      ></div>
-      <div
-        class="star-bg"
-        style="top: 8%; left: 55%; width: 2px; height: 2px; animation-delay: 2s"
-      ></div>
-      <div
-        class="star-bg"
-        style="
-          top: 25%;
-          left: 70%;
-          width: 3px;
-          height: 3px;
-          animation-delay: 0.3s;
-        "
-      ></div>
-      <div
-        class="star-bg"
-        style="
-          top: 12%;
-          left: 85%;
-          width: 2px;
-          height: 2px;
-          animation-delay: 0.8s;
-        "
-      ></div>
-      <div
-        class="star-bg"
-        style="
-          top: 30%;
-          left: 92%;
-          width: 2px;
-          height: 2px;
-          animation-delay: 1.3s;
-        "
-      ></div>
+        <div class="star-bg" style="top: 10%; left: 5%; width: 3px; height: 3px; animation-delay: 0s;"></div>
+        <div class="star-bg" style="top: 20%; left: 15%; width: 2px; height: 2px; animation-delay: 0.5s;"></div>
+        <div class="star-bg" style="top: 5%; left: 25%; width: 2px; height: 2px; animation-delay: 1s;"></div>
+        <div class="star-bg" style="top: 15%; left: 40%; width: 3px; height: 3px; animation-delay: 1.5s;"></div>
+        <div class="star-bg" style="top: 8%; left: 55%; width: 2px; height: 2px; animation-delay: 2s;"></div>
+        <div class="star-bg" style="top: 25%; left: 70%; width: 3px; height: 3px; animation-delay: 0.3s;"></div>
+        <div class="star-bg" style="top: 12%; left: 85%; width: 2px; height: 2px; animation-delay: 0.8s;"></div>
+        <div class="star-bg" style="top: 30%; left: 92%; width: 2px; height: 2px; animation-delay: 1.3s;"></div>
+        <div class="star-bg" style="top: 5%; left: 65%; width: 2px; height: 2px; animation-delay: 1.8s;"></div>
+        <div class="star-bg" style="top: 22%; left: 50%; width: 3px; height: 3px; animation-delay: 2.2s;"></div>
     </div>
 
     <!-- Nordlicht -->
@@ -1113,305 +902,278 @@
 
     <!-- Schneefall -->
     <div class="snowflakes">
-      <div
-        class="snowflake"
-        style="left: 3%; animation-duration: 15s; font-size: 1.4em"
-      >
-        ❄
-      </div>
-      <div
-        class="snowflake"
-        style="left: 12%; animation-duration: 12s; font-size: 1em"
-      >
-        ❅
-      </div>
-      <div
-        class="snowflake"
-        style="left: 22%; animation-duration: 18s; font-size: 0.8em"
-      >
-        ❆
-      </div>
-      <div
-        class="snowflake"
-        style="left: 32%; animation-duration: 14s; font-size: 1.2em"
-      >
-        ❄
-      </div>
-      <div
-        class="snowflake"
-        style="left: 42%; animation-duration: 16s; font-size: 0.9em"
-      >
-        ❅
-      </div>
-      <div
-        class="snowflake"
-        style="left: 52%; animation-duration: 13s; font-size: 1.1em"
-      >
-        ❆
-      </div>
-      <div
-        class="snowflake"
-        style="left: 62%; animation-duration: 17s; font-size: 1.3em"
-      >
-        ❄
-      </div>
-      <div
-        class="snowflake"
-        style="left: 72%; animation-duration: 11s; font-size: 0.7em"
-      >
-        ❅
-      </div>
-      <div
-        class="snowflake"
-        style="left: 82%; animation-duration: 19s; font-size: 1em"
-      >
-        ❆
-      </div>
-      <div
-        class="snowflake"
-        style="left: 92%; animation-duration: 14s; font-size: 1.4em"
-      >
-        ❄
-      </div>
+        <div class="snowflake" style="left: 3%; animation-duration: 15s; font-size: 1.4em;">❄</div>
+        <div class="snowflake" style="left: 12%; animation-duration: 12s; font-size: 1em;">❅</div>
+        <div class="snowflake" style="left: 22%; animation-duration: 18s; font-size: 0.8em;">❆</div>
+        <div class="snowflake" style="left: 32%; animation-duration: 14s; font-size: 1.2em;">❄</div>
+        <div class="snowflake" style="left: 42%; animation-duration: 16s; font-size: 0.9em;">❅</div>
+        <div class="snowflake" style="left: 52%; animation-duration: 13s; font-size: 1.1em;">❆</div>
+        <div class="snowflake" style="left: 62%; animation-duration: 17s; font-size: 1.3em;">❄</div>
+        <div class="snowflake" style="left: 72%; animation-duration: 11s; font-size: 0.7em;">❅</div>
+        <div class="snowflake" style="left: 82%; animation-duration: 19s; font-size: 1em;">❆</div>
+        <div class="snowflake" style="left: 92%; animation-duration: 14s; font-size: 1.4em;">❄</div>
     </div>
 
     <!-- Karte -->
     <div class="card">
-      <!-- Schleife -->
-      <div class="bow">
-        <div class="bow-left"></div>
-        <div class="bow-right"></div>
-        <div class="bow-center"></div>
-        <div class="bow-tail-left"></div>
-        <div class="bow-tail-right"></div>
-      </div>
-
-      <!-- Personalisierter Gruß -->
-      <p class="personal-greeting" id="personalGreeting"></p>
-
-      <h1 class="greeting">Frohe Weihnachten</h1>
-      <p class="year">✦ 2025 ✦</p>
-
-      <div class="divider"></div>
-
-      <!-- Lichterkette -->
-      <div class="string-lights">
-        <div class="bulb"></div>
-        <div class="bulb"></div>
-        <div class="bulb"></div>
-        <div class="bulb"></div>
-        <div class="bulb"></div>
-        <div class="bulb"></div>
-        <div class="bulb"></div>
-        <div class="bulb"></div>
-        <div class="bulb"></div>
-      </div>
-
-      <!-- Weihnachtsbaum -->
-      <div class="tree-container">
-        <div class="tree-glow"></div>
-        <div class="tree-star">⭐</div>
-        <div class="tree-layer tree-layer-1"></div>
-        <div class="tree-layer tree-layer-2"></div>
-        <div class="tree-layer tree-layer-3"></div>
-        <div class="tree-ornament"></div>
-        <div class="tree-ornament"></div>
-        <div class="tree-ornament"></div>
-        <div class="tree-ornament"></div>
-        <div class="tree-ornament"></div>
-        <div class="tree-ornament"></div>
-        <div class="tree-trunk"></div>
-      </div>
-
-      <!-- Nachricht -->
-      <p class="message">
-        ✨ Mögen <span class="message-highlight">Liebe</span> und
-        <span class="message-highlight">Freude</span> ✨<br />
-        dein Herz erwärmen,<br />
-        <span class="message-highlight">Frieden</span> deine Seele berühren<br />
-        und <span class="message-highlight">Glück</span> dich durchs neue Jahr
-        begleiten.
-      </p>
-
-      <!-- Personalisierte Nachricht -->
-      <div class="personal-message" id="personalMessage" style="display: none">
-        🎄 Liebe/r <span class="name" id="messageName"></span>,<br />
-        wir wünschen dir ein wundervolles Weihnachtsfest<br />
-        und einen guten Rutsch ins neue Jahr! 🎆
-      </div>
-
-      <div class="divider"></div>
-
-      <!-- Interaktive Geschenke -->
-      <div class="gifts-section">
-        <div class="gift-wrapper" onclick="openGift(this)">
-          <div class="surprise">⛄</div>
-          <div class="gift-box blue">
-            <div class="gift-ribbon-v"></div>
-            <div class="gift-ribbon-h"></div>
-            <div class="gift-bow">🎀</div>
-          </div>
-          <span class="gift-label">Klick mich!</span>
+        <!-- Schleife -->
+        <div class="bow">
+            <div class="bow-left"></div>
+            <div class="bow-right"></div>
+            <div class="bow-center"></div>
+            <div class="bow-tail-left"></div>
+            <div class="bow-tail-right"></div>
         </div>
 
-        <div class="gift-wrapper" onclick="openGift(this)">
-          <div class="surprise">🎅</div>
-          <div class="gift-box gold">
-            <div class="gift-ribbon-v"></div>
-            <div class="gift-ribbon-h"></div>
-            <div class="gift-bow">🎀</div>
-          </div>
-          <span class="gift-label">Klick mich!</span>
+        <!-- Personalisierter Gruß (nur mit Parameter sichtbar) -->
+        <p class="personal-greeting" id="personalGreeting">
+            🌟 Für <span class="name" id="recipientName"></span> 🌟
+        </p>
+
+        <h1 class="greeting">Frohe Weihnachten</h1>
+        <p class="year">✦ 2025 ✦</p>
+
+        <div class="divider"></div>
+
+        <!-- Lichterkette -->
+        <div class="string-lights">
+            <div class="bulb"></div>
+            <div class="bulb"></div>
+            <div class="bulb"></div>
+            <div class="bulb"></div>
+            <div class="bulb"></div>
+            <div class="bulb"></div>
+            <div class="bulb"></div>
+            <div class="bulb"></div>
+            <div class="bulb"></div>
         </div>
 
-        <div class="gift-wrapper" onclick="openGift(this)">
-          <div class="surprise">🦌</div>
-          <div class="gift-box purple">
-            <div class="gift-ribbon-v"></div>
-            <div class="gift-ribbon-h"></div>
-            <div class="gift-bow">🎀</div>
-          </div>
-          <span class="gift-label">Klick mich!</span>
+        <!-- Weihnachtsbaum -->
+        <div class="tree-container">
+            <div class="tree-glow"></div>
+            <div class="tree-star">⭐</div>
+            <div class="tree-layer tree-layer-1"></div>
+            <div class="tree-layer tree-layer-2"></div>
+            <div class="tree-layer tree-layer-3"></div>
+            <div class="tree-ornament"></div>
+            <div class="tree-ornament"></div>
+            <div class="tree-ornament"></div>
+            <div class="tree-ornament"></div>
+            <div class="tree-ornament"></div>
+            <div class="tree-ornament"></div>
+            <div class="tree-trunk"></div>
         </div>
-      </div>
 
-      <p class="click-hint">👆 Klicke auf die Geschenke!</p>
+        <!-- Nachricht -->
+        <p class="message">
+            ✨ Mögen <span class="message-highlight">Liebe</span> und <span class="message-highlight">Freude</span> ✨<br>
+            dein Herz erwärmen,<br>
+            <span class="message-highlight">Frieden</span> deine Seele berühren<br>
+            und <span class="message-highlight">Glück</span> dich durchs neue Jahr begleiten.
+        </p>
 
-      <!-- Fußzeile -->
-      <div class="footer">
-        <span>🎄</span>
-        <span>❄️</span>
-        <span>🌟</span>
-        <span>🔔</span>
-        <span>💝</span>
-      </div>
-
-      <!-- Teilen-Bereich -->
-      <div class="share-section">
-        <p class="share-title">🎁 Teile diese Karte mit jemandem:</p>
-        <div class="share-input-wrapper">
-          <input
-            type="text"
-            class="share-input"
-            id="nameInput"
-            placeholder="Name eingeben..."
-          />
-          <button class="share-btn" onclick="generateLink()">
-            Link erstellen
-          </button>
+        <!-- Personalisierte Nachricht (nur mit Parameter sichtbar) -->
+        <div class="personal-message" id="personalMessage">
+            🎄 Liebe/r <span class="name" id="messageName"></span>,<br>
+            wir wünschen dir ein wundervolles Weihnachtsfest<br>
+            und einen guten Rutsch ins neue Jahr! 🎆
         </div>
-        <div class="share-link" id="shareLink">
-          <p class="share-link-text" id="linkText"></p>
-          <button class="copy-btn" id="copyBtn" onclick="copyLink()">
-            📋 Link kopieren
-          </button>
+
+        <div class="divider"></div>
+
+        <!-- Interaktive Geschenke -->
+        <div class="gifts-section">
+            <div class="gift-wrapper" onclick="openGift(this)">
+                <div class="surprise">⛄</div>
+                <div class="gift-box blue">
+                    <div class="gift-ribbon-v"></div>
+                    <div class="gift-ribbon-h"></div>
+                    <div class="gift-bow">🎀</div>
+                </div>
+                <span class="gift-label">Klick mich!</span>
+            </div>
+
+            <div class="gift-wrapper" onclick="openGift(this)">
+                <div class="surprise">🎅</div>
+                <div class="gift-box gold">
+                    <div class="gift-ribbon-v"></div>
+                    <div class="gift-ribbon-h"></div>
+                    <div class="gift-bow">🎀</div>
+                </div>
+                <span class="gift-label">Klick mich!</span>
+            </div>
+
+            <div class="gift-wrapper" onclick="openGift(this)">
+                <div class="surprise">🦌</div>
+                <div class="gift-box purple">
+                    <div class="gift-ribbon-v"></div>
+                    <div class="gift-ribbon-h"></div>
+                    <div class="gift-bow">🎀</div>
+                </div>
+                <span class="gift-label">Klick mich!</span>
+            </div>
         </div>
-      </div>
+
+        <p class="click-hint">👆 Klicke auf die Geschenke!</p>
+
+        <!-- Absender (nur mit Parameter sichtbar) -->
+        <div class="from-section" id="fromSection">
+            <p class="from-text">Mit herzlichen Grüßen,<br><span class="from-name" id="fromName"></span></p>
+        </div>
+
+        <!-- Fußzeile -->
+        <div class="footer">
+            <span>🎄</span>
+            <span>❄️</span>
+            <span>🌟</span>
+            <span>🔔</span>
+            <span>💝</span>
+        </div>
+
+        <!-- Teilen-Bereich (nur OHNE Parameter sichtbar) -->
+        <div class="share-section" id="shareSection">
+            <p class="share-title">🎁 Erstelle eine personalisierte Karte:</p>
+            <div class="share-input-wrapper">
+                <input type="text" class="share-input" id="nameInput" placeholder="Empfänger-Name">
+                <input type="text" class="share-input" id="fromInput" placeholder="Dein Name">
+            </div>
+            <div style="margin-top: 10px;">
+                <button class="share-btn" onclick="generateLink()">✨ Link erstellen</button>
+            </div>
+            <div class="share-link" id="shareLink">
+                <p class="share-link-text" id="linkText"></p>
+                <button class="copy-btn" id="copyBtn" onclick="copyLink()">📋 Link kopieren</button>
+            </div>
+        </div>
     </div>
 
     <script>
-      // Name aus URL-Parameter lesen
-      function getNameFromURL() {
-        const params = new URLSearchParams(window.location.search);
-        return params.get("name");
-      }
-
-      // Seite initialisieren
-      function initPage() {
-        const name = getNameFromURL();
-
-        if (name) {
-          const decodedName = decodeURIComponent(name);
-
-          // Personalisierter Gruß oben
-          document.getElementById(
-            "personalGreeting"
-          ).innerHTML = `🌟 Für <span class="name">${decodedName}</span> 🌟`;
-          document.getElementById("personalGreeting").style.opacity = "0";
-          document.getElementById("personalGreeting").style.animation =
-            "fadeInDown 1s ease-out 0.5s forwards";
-
-          // Personalisierte Nachricht
-          document.getElementById("personalMessage").style.display = "block";
-          document.getElementById("messageName").textContent = decodedName;
-
-          // Titel anpassen
-          document.title = `Frohe Weihnachten, ${decodedName}! 🎄`;
+        // Parameter aus URL lesen
+        function getParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                name: params.get('name'),
+                from: params.get('from')
+            };
         }
-      }
 
-      // Geschenk öffnen
-      function openGift(element) {
-        if (element.classList.contains("opened")) {
-          element.classList.remove("opened");
-          element.querySelector(".gift-label").textContent = "Klick mich!";
-        } else {
-          element.classList.add("opened");
-          element.querySelector(".gift-label").textContent = "Nochmal?";
+        // Seite initialisieren
+        function initPage() {
+            const { name, from } = getParams();
+            const isPersonalized = name !== null;
+
+            if (isPersonalized) {
+                // === PERSONALISIERTE ANSICHT ===
+                const decodedName = decodeURIComponent(name);
+
+                // Empfänger-Name anzeigen
+                document.getElementById('recipientName').textContent = decodedName;
+                document.getElementById('messageName').textContent = decodedName;
+                document.getElementById('personalGreeting').classList.add('visible');
+                document.getElementById('personalMessage').classList.add('visible');
+
+                // Titel anpassen
+                document.title = `Frohe Weihnachten, ${decodedName}! 🎄`;
+
+                // Absender anzeigen (falls vorhanden)
+                if (from) {
+                    const decodedFrom = decodeURIComponent(from);
+                    document.getElementById('fromName').textContent = decodedFrom;
+                    document.getElementById('fromSection').classList.add('visible');
+                }
+
+                // Teilen-Bereich AUSBLENDEN
+                document.getElementById('shareSection').classList.remove('visible');
+
+            } else {
+                // === STANDARD-ANSICHT (ohne Parameter) ===
+
+                // Personalisierte Elemente ausblenden
+                document.getElementById('personalGreeting').classList.remove('visible');
+                document.getElementById('personalMessage').classList.remove('visible');
+                document.getElementById('fromSection').classList.remove('visible');
+
+                // Teilen-Bereich ANZEIGEN
+                document.getElementById('shareSection').classList.add('visible');
+            }
         }
-      }
 
-      // Link generieren
-      function generateLink() {
-        const nameInput = document.getElementById("nameInput");
-        const name = nameInput.value.trim();
-
-        if (name) {
-          const baseURL = window.location.origin + window.location.pathname;
-          const link = `${baseURL}?name=${encodeURIComponent(name)}`;
-
-          document.getElementById("linkText").textContent = link;
-          document.getElementById("shareLink").classList.add("visible");
-          document.getElementById("copyBtn").classList.remove("copied");
-          document.getElementById("copyBtn").textContent = "📋 Link kopieren";
-        } else {
-          alert("Bitte gib einen Namen ein!");
+        // Geschenk öffnen/schließen
+        function openGift(element) {
+            if (element.classList.contains('opened')) {
+                element.classList.remove('opened');
+                element.querySelector('.gift-label').textContent = 'Klick mich!';
+            } else {
+                element.classList.add('opened');
+                element.querySelector('.gift-label').textContent = 'Nochmal?';
+            }
         }
-      }
 
-      // Link kopieren
-      function copyLink() {
-        const linkText = document.getElementById("linkText").textContent;
+        // Link generieren
+        function generateLink() {
+            const nameInput = document.getElementById('nameInput').value.trim();
+            const fromInput = document.getElementById('fromInput').value.trim();
 
-        navigator.clipboard
-          .writeText(linkText)
-          .then(() => {
-            const btn = document.getElementById("copyBtn");
-            btn.classList.add("copied");
-            btn.textContent = "✅ Kopiert!";
+            if (!nameInput) {
+                alert('Bitte gib einen Empfänger-Namen ein!');
+                return;
+            }
+
+            const baseURL = window.location.origin + window.location.pathname;
+            let link = `${baseURL}?name=${encodeURIComponent(nameInput)}`;
+
+            if (fromInput) {
+                link += `&from=${encodeURIComponent(fromInput)}`;
+            }
+
+            document.getElementById('linkText').textContent = link;
+            document.getElementById('shareLink').classList.add('visible');
+            document.getElementById('copyBtn').classList.remove('copied');
+            document.getElementById('copyBtn').textContent = '📋 Link kopieren';
+        }
+
+        // Link kopieren
+        function copyLink() {
+            const linkText = document.getElementById('linkText').textContent;
+
+            navigator.clipboard.writeText(linkText).then(() => {
+                showCopied();
+            }).catch(() => {
+                // Fallback
+                const textArea = document.createElement('textarea');
+                textArea.value = linkText;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showCopied();
+            });
+        }
+
+        function showCopied() {
+            const btn = document.getElementById('copyBtn');
+            btn.classList.add('copied');
+            btn.textContent = '✅ Kopiert!';
 
             setTimeout(() => {
-              btn.classList.remove("copied");
-              btn.textContent = "📋 Link kopieren";
+                btn.classList.remove('copied');
+                btn.textContent = '📋 Link kopieren';
             }, 2000);
-          })
-          .catch((err) => {
-            // Fallback für ältere Browser
-            const textArea = document.createElement("textarea");
-            textArea.value = linkText;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand("copy");
-            document.body.removeChild(textArea);
+        }
 
-            const btn = document.getElementById("copyBtn");
-            btn.classList.add("copied");
-            btn.textContent = "✅ Kopiert!";
-          });
-      }
+        // Enter-Taste für Inputs
+        document.addEventListener('DOMContentLoaded', function() {
+            initPage();
 
-      // Enter-Taste für Input
-      document.addEventListener("DOMContentLoaded", function () {
-        initPage();
-
-        document
-          .getElementById("nameInput")
-          .addEventListener("keypress", function (e) {
-            if (e.key === "Enter") {
-              generateLink();
-            }
-          });
-      });
+            const inputs = document.querySelectorAll('.share-input');
+            inputs.forEach(input => {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        generateLink();
+                    }
+                });
+            });
+        });
     </script>
-  </body>
+</body>
 </html>
